@@ -1,0 +1,135 @@
+.bs-icon {
+  --bs-icon-size: .75rem;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--bs-icon-size);
+  width: calc(var(--bs-icon-size) * 2);
+  height: calc(var(--bs-icon-size) * 2);
+  color: var(--bs-primary);
+}
+
+.bs-icon-xs {
+  --bs-icon-size: 1rem;
+  width: calc(var(--bs-icon-size) * 1.5);
+  height: calc(var(--bs-icon-size) * 1.5);
+}
+
+.bs-icon-sm {
+  --bs-icon-size: 1rem;
+}
+
+.bs-icon-md {
+  --bs-icon-size: 1.5rem;
+}
+
+.bs-icon-lg {
+  --bs-icon-size: 2rem;
+}
+
+.bs-icon-xl {
+  --bs-icon-size: 2.5rem;
+}
+
+.bs-icon.bs-icon-primary {
+  color: var(--bs-white);
+  background: var(--bs-primary);
+}
+
+.bs-icon.bs-icon-primary-light {
+  color: var(--bs-primary);
+  background: rgba(var(--bs-primary-rgb), .2);
+}
+
+.bs-icon.bs-icon-semi-white {
+  color: var(--bs-primary);
+  background: rgba(255, 255, 255, .5);
+}
+
+.bs-icon.bs-icon-rounded {
+  border-radius: .5rem;
+}
+
+.bs-icon.bs-icon-circle {
+  border-radius: 50%;
+}
+
+.navbar {
+  background: rgba(1,6,25,0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.btn {
+  border-radius: 12px;
+  background: linear-gradient(#091781, #234383);
+  border-style: none;
+  font-family: ABeeZee, sans-serif;
+}
+
+.hero-content {
+  background: linear-gradient(transparent 0%, #010619 100%), url("../../assets/img/heroBackgroundVertical.png"), #010619;
+}
+
+@media (min-width: 768px) {
+  .hero-content {
+    background: transparent;
+  }
+}
+
+@media (min-width: 1200px) {
+  .img-round {
+    width: 1200px;
+  }
+}
+
+@media (max-width: 300px) {
+  .div-wrap-rounds {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .px-3.py-3.my-3.mx-3 {
+    height: 400px;
+  }
+}
+
+.card {
+  transition: transform 0.3s ease;
+  transform: scale(1);
+}
+
+@media (max-width: 300px) {
+  .px-3.py-3.my-3.mx-3 {
+    height: 330px;
+  }
+}
+
+@media (min-width: 768px) {
+  .px-3.py-3.my-3.mx-3 {
+    height: 350px;
+  }
+}
+
+@media (max-width: 576px) {
+  .mb-0.pt-0.mt-2.sponsor {
+    padding-top: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sponsor {
+    padding-top: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mx-2.media-support {
+    margin: 5px;
+  }
+}
+
