@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://skillcetera.live/esc/sitemap.xml
