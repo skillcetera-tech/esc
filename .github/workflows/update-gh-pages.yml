@@ -1,0 +1,22 @@
+name: Update gh-pages branch
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync-gh-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Sync gh-pages branch to main
+        run: |
+          git checkout -B gh-pages
+          git push -f origin gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
