@@ -399,11 +399,35 @@
             </div>
         </div>
     </div>
-    <div class="text-center"><a class="btn btn-primary ms-md-2" href="https://www.facebook.com/skillcetera"
+    <div class="text-center"><a class="btn btn-primary ms-md-2"
+                                href="https://www.facebook.com/skillcetera"
                                 role="button"
                                 style="font-family:Roboto, sans-serif;"
                                 target="_blank">&nbsp;Theo dõi ESC</a></div>
 </section><!-- End: #contestants -->
+<!-- Voting Results Section -->
+<section class="py-5" id="results-section" style="background: #010619;">
+    <div class="container">
+        <h2 class="text-center text-white mb-4"
+            style="font-family: Roboto, sans-serif;">
+            Voting Results
+        </h2>
+        <div class="table-responsive">
+            <!-- Note: Removed "table-dark" and added "custom-table" -->
+            <table class="table custom-table" id="results-table">
+                <thead>
+                <tr>
+                    <th scope="col">Candidate Name</th>
+                    <th scope="col">Total Score</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Table rows will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
 <!-- Start: timeline -->
 <section id="timeline-section">
     <div class="text-center px-0 div-wrap-rounds mx-0">
@@ -738,11 +762,43 @@
 <script crossorigin="anonymous"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
         src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/bs-init.js?h=4777463a3dc87e6b53aab58f966705fb"></script>
 <script src="assets/js/countdown.js?h=1e4f4419e11984b63273a7b1f2afd847"></script>
 <script src="assets/js/counterSroll.js?h=fbe8fec81f8350d1edc31ade538ce853"></script>
 <script src="assets/js/carousel.js"></script>
+<script>
+    $(document).ready(function () {
+        var csvFilePath = './data/data.csv';
+
+        Papa.parse(csvFilePath, {
+            download: true,
+            header: false,
+            complete: function (results) {
+                var data = results.data.slice(2);
+
+                data.sort(function (a, b) {
+                    return parseFloat(b[9]) - parseFloat(a[9]);
+                });
+
+                var tbody = $("#results-table tbody");
+                $.each(data, function (i, row) {
+                    var candidateName = row[1],
+                        totalScore = row[9];
+
+                    var tr = $("<tr></tr>");
+                    tr.append($("<td></td>").text(candidateName));
+                    tr.append($("<td></td>").text(totalScore));
+                    tbody.append(tr);
+                });
+            },
+            error: function (err) {
+                console.error("Error loading CSV file:", err);
+            }
+        });
+    });
+</script>
 </body>
 
 </html>
